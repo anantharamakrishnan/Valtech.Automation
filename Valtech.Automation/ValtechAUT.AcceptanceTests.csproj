@@ -79,7 +79,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Test.feature</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\TableExtensions.cs" />
     <Compile Include="Hooks\Hooks.cs" />
     <Compile Include="Pages\TestPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -101,8 +100,7 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Helpers\Api\" />
-    <Folder Include="Helpers\DataAccess\" />
+    <Folder Include="Helpers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Browsers\chromedriver.exe">
