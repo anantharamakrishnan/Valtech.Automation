@@ -3,40 +3,76 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using TechTalk.SpecFlow;
+using ValTechAUT.AcceptanceTests.Common;
+using ValTechAUT.AcceptanceTests.Pages;
 
-namespace Valtech.Automation.Steps
+namespace ValtechAUT.AcceptanceTests.Steps
 {
     [Binding]
     public sealed class TestSteps
     {
-        // For additional details on SpecFlow step definitions see http://go.specflow.org/doc-stepdef
+        #region Arrange
 
-        [Given("I have entered (.*) into the calculator")]
-        public void GivenIHaveEnteredSomethingIntoTheCalculator(int number)
+        [Given(@"I launch the valtech website")]
+        public void GivenILaunchTheValtechWebsite()
         {
-            //TODO: implement arrange (precondition) logic
-            // For storing and retrieving scenario-specific data see http://go.specflow.org/doc-sharingdata 
-            // To use the multiline text or the table argument of the scenario,
-            // additional string/Table parameters can be defined on the step definition
-            // method. 
+            TestPage testpg = new TestPage();
 
-            ScenarioContext.Current.Pending();
+            testpg.launchPage();
+
         }
 
-        [When("I press add")]
-        public void WhenIPressAdd()
-        {
-            //TODO: implement act (action) logic
+       
+        #endregion
 
-            ScenarioContext.Current.Pending();
+        #region Act
+        [When(@"I navigate to the tab menu ""(.*)""")]
+        public void WhenINavigateToTheTabMenu(string tabMenu)
+        {
+            TestPage testpg = new TestPage();
+
+            testpg.NavigateToTabMenu(tabMenu);
         }
 
-        [Then("the result should be (.*) on the screen")]
-        public void ThenTheResultShouldBe(int result)
+        [When(@"I navigate to the tab menu ""(.*)"" page")]
+        public void WhenINavigateToTheTabMenuPage(string p0)
         {
-            //TODO: implement assert (verification) logic
+            TestPage testpg = new TestPage();
 
-            ScenarioContext.Current.Pending();
+            testpg.NavigateToContactPage();
         }
+
+        #endregion
+
+        #region Assert
+
+        [Then(@"I should see the latest news displayed on the page")]
+        public void ThenIShouldSeeTheLatestNewsDisplayedOnThePage()
+        {
+            TestPage testpg = new TestPage();
+
+            testpg.VerifyLatestNewsDisplayed();
+
+        }
+
+        [Then(@"I should see the page title as ""(.*)""")]
+        public void ThenIShouldSeeThePageTitleAs(string verifyTitle)
+        {
+            TestPage testpg = new TestPage();
+
+            testpg.VerifyPageHeader(verifyTitle);
+        }
+
+        [Then(@"I should be able to calculate the number of offices")]
+        public void ThenIShouldBeAbleToCalculateTheNumberOfOffices()
+        {
+             TestPage testpg = new TestPage();
+
+             int getNoOfOffices = testpg.getOfficeCount();
+
+            Console.WriteLine("The number of Valtech contact us office location includes" + getNoOfOffices);
+        }
+
+        #endregion
     }
 }

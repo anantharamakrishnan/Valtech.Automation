@@ -1,0 +1,5 @@
+
+packages/*
+Valtech.Automation/bin/*
+Valtech.Automation/Helpers/DataAccess/InsertQuery.cs
+Valtech.Automation/obj/Debug/*
